@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Back 💌</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to top right, #ffdde1, #ee9ca7);
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .envelope {
+      width: 200px;
+      height: 120px;
+      background: #fff;
+      border: 2px solid #e91e63;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .envelope::before, .envelope::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .envelope::before {
+      top: 0;
+      left: 0;
+      border-width: 60px 100px 0 100px;
+      border-color: #e91e63 transparent transparent transparent;
+    }
+
+    .envelope::after {
+      bottom: 0;
+      left: 0;
+      border-width: 0 100px 60px 100px;
+      border-color: transparent transparent #e91e63 transparent;
+    }
+
+    .letter {
+      display: none;
+      background: white;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 20px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .heart {
+      font-size: 2em;
+      color: red;
+      animation: heartbeat 1s infinite;
+      margin-top: 15px;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flower {
+      position: absolute;
+      top: -50px;
+      color: #ff69b4;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="envelope" onclick="openLetter()"></div>
+
+    <div class="letter" id="letter">
+      <h1>Welcome Back Ika</h1>
+      <p>
+        Selamat datang di rumah yang dirindukan selama di Jepang.<br><br>
+        Jangan lupa oleh-oleh yang sudah kami pesan<br><br>
+        Salam rindu dari ledos yang sudah sangat kangen<br><br>
+
+
+        Dari kami, keturunan Mandor dan Guweh sendiri Ketuanya 😎
+      </p>
+      <div class="heart">❤️</div>
+    </div>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.querySelector('.envelope').style.display = 'none';
+      document.getElementById('letter').style.display = 'block';
+    }
+
+    // Animasi bunga jatuh
+    const flowers = ["🌸", "🌺", "💮", "🌼"];
+    for (let i = 0; i < 30; i++) {
+      let flower = document.createElement("div");
+      flower.className = "flower";
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+      flower.style.fontSize = (16 + Math.random() * 20) + "px";
+      document.body.appendChild(flower);
+    }
+  </script>
+
+</body>
+</html>
